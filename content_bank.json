@@ -1,0 +1,134 @@
+[
+ {
+  "id": "Q-005-002",
+  "type": "quran",
+  "arabic": "وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ",
+  "translation": "And cooperate in righteousness and piety.",
+  "reference": "Qur'an 5:2",
+  "translation_source": "Sahih International (excerpt)",
+  "cta": "Take one extra mat with you this Friday — make their prayer more comfortable and earn extra blessings.",
+  "week": 1,
+  "status": "Approved"
+ },
+ {
+  "id": "Q-062-009",
+  "type": "quran",
+  "arabic": "إِذَا نُودِيَ لِلصَّلَاةِ مِن يَوْمِ الْجُمُعَةِ فَاسْعَوْا إِلَىٰ ذِكْرِ اللَّهِ",
+  "translation": "When the call is made for prayer on the day of Jumu'ah, hasten to the remembrance of Allah.",
+  "reference": "Qur'an 62:9",
+  "translation_source": "Sahih International, lightly simplified (excerpt)",
+  "cta": "Heading to Jummah? Take a second mat with you before you leave.",
+  "week": 2,
+  "status": "Approved"
+ },
+ {
+  "id": "H-M-2699",
+  "type": "hadith",
+  "arabic": "وَاللَّهُ فِي عَوْنِ الْعَبْدِ مَا كَانَ الْعَبْدُ فِي عَوْنِ أَخِيهِ",
+  "translation": "Allah helps His servant as long as the servant helps his brother.",
+  "reference": "Sahih Muslim 2699",
+  "translation_source": "Own rendering; sunnah.com: 'Allah is at the back of a servant so long as the servant is at the back of his brother' (excerpt)",
+  "cta": "Bring one for your brother or sister this Friday.",
+  "week": 3,
+  "status": "Approved"
+ },
+ {
+  "id": "Q-099-007",
+  "type": "quran",
+  "arabic": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ",
+  "translation": "So whoever does an atom's weight of good will see it.",
+  "reference": "Qur'an 99:7",
+  "translation_source": "Sahih International",
+  "cta": "No good is too small. Take one extra mat with you this Friday.",
+  "week": 4,
+  "status": "Approved"
+ },
+ {
+  "id": "H-M-1893",
+  "type": "hadith",
+  "arabic": "مَنْ دَلَّ عَلَى خَيْرٍ فَلَهُ مِثْلُ أَجْرِ فَاعِلِهِ",
+  "translation": "Whoever guides someone to good will have a reward like the one who does it.",
+  "reference": "Sahih Muslim 1893",
+  "translation_source": "Own rendering; sunnah.com: 'One who guides to something good has a reward similar to that of its doer'",
+  "cta": "Share this with someone who goes to Jummah.",
+  "week": 5,
+  "status": "Approved"
+ },
+ {
+  "id": "Q-002-148",
+  "type": "quran",
+  "arabic": "فَاسْتَبِقُوا الْخَيْرَاتِ",
+  "translation": "So race to all that is good.",
+  "reference": "Qur'an 2:148",
+  "translation_source": "Sahih International (brackets removed, excerpt)",
+  "cta": "Be the one with the spare mat this Friday.",
+  "week": 6,
+  "status": "Approved"
+ },
+ {
+  "id": "H-B-0013",
+  "type": "hadith",
+  "arabic": "لاَ يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ",
+  "translation": "None of you truly believes until he loves for his brother what he loves for himself.",
+  "reference": "Sahih al-Bukhari 13",
+  "translation_source": "Own rendering; sunnah.com: 'None of you will have faith till he wishes for his (Muslim) brother what he likes for himself'",
+  "cta": "You'd want a mat if you arrived late. Bring one for someone who does.",
+  "week": 7,
+  "status": "Approved"
+ },
+ {
+  "id": "H-M-0854",
+  "type": "hadith",
+  "arabic": "خَيْرُ يَوْمٍ طَلَعَتْ عَلَيْهِ الشَّمْسُ يَوْمُ الْجُمُعَةِ",
+  "translation": "The best day on which the sun has risen is Friday.",
+  "reference": "Sahih Muslim 854",
+  "translation_source": "Riyad as-Salihin 1147 (sunnah.com), excerpt",
+  "cta": "Make the best day easier for someone — bring one extra mat.",
+  "week": 8,
+  "status": "Approved"
+ },
+ {
+  "id": "Q-049-010",
+  "type": "quran",
+  "arabic": "إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ",
+  "translation": "The believers are but brothers.",
+  "reference": "Qur'an 49:10",
+  "translation_source": "Sahih International (excerpt)",
+  "cta": "Someone will pray on the pavement this Friday. Bring them a mat.",
+  "week": 9,
+  "status": "Approved"
+ },
+ {
+  "id": "H-B-6021",
+  "type": "hadith",
+  "arabic": "كُلُّ مَعْرُوفٍ صَدَقَةٌ",
+  "translation": "Every good deed is charity.",
+  "reference": "Sahih al-Bukhari 6021",
+  "translation_source": "Own rendering; sunnah.com: 'Enjoining, all that is good is a Sadaqa'",
+  "cta": "One extra mat in your bag is sadaqah waiting for its moment.",
+  "week": 10,
+  "status": "Approved"
+ },
+ {
+  "id": "Q-002-110",
+  "type": "quran",
+  "arabic": "وَمَا تُقَدِّمُوا لِأَنفُسِكُم مِّنْ خَيْرٍ تَجِدُوهُ عِندَ اللَّهِ",
+  "translation": "Whatever good you put forward for yourselves, you will find it with Allah.",
+  "reference": "Qur'an 2:110",
+  "translation_source": "Sahih International (excerpt)",
+  "cta": "Keep a spare mat ready — at home, at work, in the car. Let it do good every Friday.",
+  "week": 11,
+  "status": "Approved"
+ },
+ {
+  "id": "H-B-0935",
+  "type": "hadith",
+  "arabic": "فِيهِ سَاعَةٌ لاَ يُوَافِقُهَا عَبْدٌ مُسْلِمٌ وَهُوَ يُصَلِّي يَسْأَلُ اللَّهَ شَيْئًا إِلاَّ أَعْطَاهُ إِيَّاهُ",
+  "translation": "On Friday there is an hour: no Muslim who is praying and asks Allah for something at that time, except that He gives it to him.",
+  "reference": "Bukhari 935 · Muslim 852",
+  "translation_source": "Own rendering; Arabic per Sahih Muslim 852a (sunnah.com); 'fihi' = on Friday",
+  "cta": "Help someone reach that hour in prayer — take one extra mat with you.",
+  "week": 12,
+  "status": "Approved"
+ }
+]

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>One Extra Mat — template</title>
+<style>
+@font-face{font-family:Naskh;src:url(fonts/NotoNaskhArabic_400Regular.ttf) format('truetype');font-weight:400}
+@font-face{font-family:Naskh;src:url(fonts/NotoNaskhArabic_500Medium.ttf) format('truetype');font-weight:500}
+@font-face{font-family:Playfair;src:url(fonts/playfair-display-latin-400-italic.woff2) format('woff2');font-style:italic}
+@font-face{font-family:Playfair;src:url(fonts/playfair-display-latin-400-normal.woff2) format('woff2');font-style:normal}
+@font-face{font-family:Inter;src:url(fonts/inter-latin-300-normal.woff2) format('woff2');font-weight:300}
+@font-face{font-family:Inter;src:url(fonts/inter-latin-400-normal.woff2) format('woff2');font-weight:400}
+@font-face{font-family:Inter;src:url(fonts/inter-latin-500-normal.woff2) format('woff2');font-weight:500}
+@font-face{font-family:Inter;src:url(fonts/inter-latin-600-normal.woff2) format('woff2');font-weight:600}
+
+:root{--green:#1F3D2B;--sand:#F4F1EA;--white:#FAFAF8;--gold:#C4A47C}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#111}
+.canvas{position:relative;overflow:hidden;--s:1}
+.light{background:var(--sand);--ink:var(--green);--glyph:var(--green);--dot:var(--gold);--pat:.06}
+.dark{background:var(--green);--ink:var(--white);--glyph:var(--gold);--dot:var(--white);--pat:.05}
+.pattern{position:absolute;inset:-6%;color:var(--ink);opacity:var(--pat)}
+.pattern svg{width:100%;height:100%}
+.frame{position:absolute;display:flex;flex-direction:column;justify-content:space-between;align-items:center;z-index:2}
+.head,.foot{display:flex;flex-direction:column;align-items:center;flex:none}
+.glyph{color:var(--glyph)}
+.glyph svg{display:block}
+.wordmark{font-family:Inter;font-weight:500;letter-spacing:.4em;color:var(--ink);margin-right:-.4em}
+.label{font-family:Inter;font-weight:600;letter-spacing:.3em;color:var(--gold);margin-right:-.3em}
+.hero{flex:1 1 auto;min-height:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ar{font-family:Naskh;font-weight:500;direction:rtl;color:var(--ink);line-height:1.9;text-wrap:balance}
+.en{text-wrap:balance;font-family:Playfair;font-style:italic;color:var(--ink);line-height:1.4}
+.ref{font-family:Inter;font-weight:400;text-transform:uppercase;letter-spacing:.25em;color:var(--ink);opacity:.6;margin-right:-.25em}
+.rule{height:2px;background:var(--gold)}
+.cta{text-wrap:balance;font-family:Inter;font-weight:300;color:var(--ink);line-height:1.6;text-align:center}
+.tag{font-family:Inter;font-weight:500;letter-spacing:.1em;color:var(--ink);opacity:.4}
+
+/* FEED 1080x1350 */
+.feed{width:1080px;height:1350px}
+.feed .frame{inset:110px 120px}
+.feed .glyph svg{width:64px;height:96px}
+.feed .head{gap:26px}
+.feed .wordmark{font-size:26px}
+.feed .label{font-size:20px;margin-top:-4px}
+.feed .hero{gap:calc(44px*var(--s));padding:36px 0}
+.feed .ar{font-size:calc(80px*var(--s))}
+.feed .en{font-size:calc(42px*var(--s));max-width:840px}
+.feed .ref{font-size:21px}
+.feed .foot{gap:34px}
+.feed .rule{width:64px}
+.feed .cta{font-size:32px;max-width:780px}
+.feed .tag{font-size:24px}
+
+/* STORY / REEL 1080x1920 — content kept inside safe zone */
+.story{width:1080px;height:1920px}
+.story .frame{top:250px;bottom:400px;left:110px;right:110px}
+.story .glyph svg{width:72px;height:108px}
+.story .head{gap:28px}
+.story .wordmark{font-size:28px}
+.story .label{font-size:21px;margin-top:-4px}
+.story .hero{gap:calc(56px*var(--s));padding:40px 0}
+.story .ar{font-size:calc(96px*var(--s))}
+.story .en{font-size:calc(48px*var(--s));max-width:860px}
+.story .ref{font-size:23px}
+.story .foot{gap:40px}
+.story .rule{width:80px}
+.story .cta{font-size:37px;max-width:820px}
+.story .tag{font-size:27px}
+
+/* AVATAR 1080x1080 — glyph only, legible at 40px */
+.avatar{width:1080px;height:1080px;display:flex;align-items:center;justify-content:center}
+.avatar .glyph svg{width:400px;height:600px;position:relative;z-index:2}
+.avatar .pattern{opacity:.07}
+.avatar{--sw:3.4}
+
+/* FACEBOOK COVER 1640x624 — all content inside the centre ~1100px that mobile shows */
+.cover{width:1640px;height:624px;display:flex;align-items:center;justify-content:center}
+.cover .inner{position:relative;z-index:2;display:flex;align-items:center;gap:56px;max-width:1080px}
+.cover .glyph svg{width:150px;height:225px}
+.cover{--sw:2.8}
+.cover .txt{display:flex;flex-direction:column;gap:26px}
+.cover .wordmark{font-size:80px;letter-spacing:.22em;font-weight:500;line-height:1}
+.cover .sub{font-family:Playfair;font-style:italic;font-size:40px;line-height:1.3;color:var(--white);opacity:.9;text-wrap:balance}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <pattern id="pat" width="120" height="120" patternUnits="userSpaceOnUse">
+      <g stroke="currentColor" stroke-width="1.5" fill="none">
+        <rect x="30" y="30" width="60" height="60"/>
+        <rect x="30" y="30" width="60" height="60" transform="rotate(45 60 60)"/>
+        <circle cx="60" cy="60" r="18"/>
+        <path d="M0 60H18M102 60H120M60 0V18M60 102V120"/>
+      </g>
+    </pattern>
+    <symbol id="mat" viewBox="0 0 64 96">
+      <g fill="none" stroke="currentColor" style="stroke-width:var(--sw,2.5)" stroke-linecap="round" stroke-linejoin="round">
+        <rect class="d d1" pathLength="1" x="8" y="6" width="48" height="84" rx="2"/>
+        <path class="d d2" pathLength="1" d="M18 74V38Q18 26 32 16Q46 26 46 38V74"/>
+        <path class="d d3" pathLength="1" d="M14 6V2M20 6V2M26 6V2M32 6V2M38 6V2M44 6V2M50 6V2M14 90V94M20 90V94M26 90V94M32 90V94M38 90V94M44 90V94M50 90V94"/>
+      </g>
+      <circle class="dot" cx="32" cy="44" r="3" style="fill:var(--dot)"/>
+    </symbol>
+  </defs>
+</svg>
+<div id="root"></div>
+
+<script>
+const PATTERN = '<div class="pattern" data-a="pat"><svg><rect width="100%" height="100%" fill="url(#pat)"/></svg></div>';
+const GLYPH = '<div class="glyph" data-a="glyph"><svg><use href="#mat"/></svg></div>';
+const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+function build(format, e){
+  const root = document.getElementById('root');
+  if(format==='avatar'){
+    root.innerHTML = `<div class="canvas avatar light" id="c">${PATTERN}${GLYPH}</div>`; return;
+  }
+  if(format==='cover'){
+    root.innerHTML = `<div class="canvas cover dark" id="c">${PATTERN}<div class="inner">${GLYPH}
+      <div class="txt"><div class="wordmark">ONE EXTRA MAT</div>
+      <div class="sub">Take one extra prayer mat to Jummah, so a fellow worshipper can pray.</div></div></div></div>`; return;
+  }
+  const theme = format==='feed' ? 'light' : 'dark';
+  root.innerHTML = `<div class="canvas ${format} ${theme}" id="c">${PATTERN}
+   <div class="frame">
+     <div class="head">${GLYPH}<div class="wordmark" data-a="wm">ONE EXTRA MAT</div><div class="label" data-a="lb">JUMMAH REMINDER</div></div>
+     <div class="hero" id="hero">
+       ${e.arabic ? `<div class="ar" data-a="ar">${esc(e.arabic)}</div>` : ''}
+       <div class="en" data-a="en">“${esc(e.translation)}”</div>
+       <div class="ref" data-a="ref">${esc(e.reference).replace(/'/g,"’")}</div>
+     </div>
+     <div class="foot"><div class="rule" data-a="rule"></div>
+       <div class="cta" data-a="cta">${esc(e.cta || 'Take one extra mat with you this Friday — make their prayer more comfortable and earn extra blessings.')}</div>
+       <div class="tag" data-a="tag">#OneExtraMat</div></div>
+   </div></div>`;
+  fit();
+}
+
+// Shrink hero type until it fits its box (long hadith vs short ayah)
+function fit(){
+  const c = document.getElementById('c'), h = document.getElementById('hero');
+  const need = () => { const cs = getComputedStyle(h), kids = [...h.children];
+    return kids.reduce((a,k)=>a+k.getBoundingClientRect().height,0) + parseFloat(cs.rowGap)*(kids.length-1)
+         + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom); };
+  let s = 1; c.style.setProperty('--s', s);
+  while (need() > h.clientHeight && s > 0.45){ s -= 0.03; c.style.setProperty('--s', s.toFixed(2)); }
+  window.FIT_SCALE = s;
+}
+
+// ---------- Animation (Reel) ----------
+const clamp = x => Math.max(0, Math.min(1, x));
+const ease = x => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };          // easeOutCubic
+const inout = x => { x = clamp(x); return x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2; };
+const seg = (t, a, b) => (t - a) / (b - a);
+function q(a){ return document.querySelector(`[data-a="${a}"]`); }
+function fadeUp(el, p, dist=24){ if(!el) return; el.style.opacity = p * (+el.dataset.base || 1); el.style.transform = `translateY(${(1-p)*dist}px)`; }
+
+function render(t){                       // t in seconds
+  if(!window._prepped){ document.querySelectorAll('[data-a]').forEach(el => el.dataset.base = getComputedStyle(el).opacity); window._prepped = true; }
+  const pat = q('pat');
+  pat.style.transform = `scale(${1.06 - 0.06*inout(seg(t,0,12))}) rotate(${-1.5 + 1.5*inout(seg(t,0,12))}deg)`;
+  pat.style.opacity = getComputedStyle(document.getElementById('c')).getPropertyValue('--pat') * ease(seg(t,0,1.2));
+
+  // mat glyph draws itself: frame, then arch, then fringes, then lamp dot
+  const d = (cls, a, b) => document.querySelectorAll('.'+cls).forEach(p=>{ p.style.strokeDasharray = 1; p.style.strokeDashoffset = 1 - inout(seg(t,a,b)); });
+  d('d1', 0.2, 1.3); d('d2', 0.9, 1.9); d('d3', 1.5, 2.1);
+  document.querySelectorAll('.dot').forEach(c => { const p = ease(seg(t,1.9,2.4)); c.style.opacity = p; });
+
+  fadeUp(q('wm'), ease(seg(t,1.6,2.4)), 16);
+  fadeUp(q('lb'), ease(seg(t,1.9,2.7)), 16);
+
+  // Arabic revealed right-to-left, in its own reading direction
+  const ar = q('ar');
+  if(ar){ const p = inout(seg(t,2.8,5.4)); const x = -15 + p*130;   // soft-edged wipe, right to left
+    const m = `linear-gradient(to left, #000 ${x-15}%, transparent ${x}%)`; ar.style.webkitMaskImage = m; ar.style.maskImage = m; }
+  const enStart = ar ? 5.3 : 2.9;
+  fadeUp(q('en'), ease(seg(t,enStart,enStart+1.0)), 20);
+  fadeUp(q('ref'), ease(seg(t,enStart+0.8,enStart+1.6)), 12);
+
+  const r = q('rule'); r.style.transform = `scaleX(${inout(seg(t,7.6,8.3))})`;
+  fadeUp(q('cta'), ease(seg(t,8.0,9.0)), 20);
+  fadeUp(q('tag'), ease(seg(t,8.9,9.6)), 10);
+}
+
+window.build = build; window.render = render;
+</script>
+</body>
+</html>
