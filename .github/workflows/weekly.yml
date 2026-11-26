@@ -1,0 +1,75 @@
+name: Weekly Jummah reminder
+
+on:
+  schedule:
+    - cron: "30 16 * * 4"   # Thursday 16:30 UTC = 8:30 pm Dubai
+  workflow_dispatch:
+    inputs:
+      week_index:
+        description: "Override entry number (0 = first). Leave blank for this week's."
+        required: false
+      post:
+        description: "Publish to Facebook and Instagram"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: weekly-post
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install renderer
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q playwright
+          python -m playwright install --with-deps chromium
+      - name: Pick this week's approved entry
+        env:
+          WEEK_INDEX: ${{ inputs.week_index }}
+        run: python publish.py pick entry.json
+      - name: Render Reel and stills
+        run: |
+          python render.py reel entry.json site 12
+          python render.py stills entry.json site
+          cp entry.json site/entry.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: render
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  publish:
+    needs: deploy
+    if: ${{ github.event_name == 'schedule' || inputs.post }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch this week's entry from Pages
+        run: |
+          sleep 30
+          curl -fsSL "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/entry.json" -o entry.json
+          curl -fsSI "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/reel.mp4" | head -1
+      - name: Post to Facebook and Instagram
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: python publish.py post entry.json "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/reel.mp4?v=${{ github.run_id }}"
