@@ -57,7 +57,7 @@ def post(entry_file, video_url):
     if not ig_id:
         ig_id = api("GET", page["id"], access_token=ptoken, fields="instagram_business_account")["instagram_business_account"]["id"]
     c = api("POST", f"{ig_id}/media", access_token=ptoken, media_type="REELS",
-            video_url=video_url, caption=cap, share_to_feed="true")["id"]
+            video_url=video_url, caption=cap, share_to_feed="true", thumb_offset="11000")["id"]
     for _ in range(60):                       # up to ~10 minutes of processing
         s = api("GET", c, access_token=ptoken, fields="status_code,status")
         if s.get("status_code") == "FINISHED":
